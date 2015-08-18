@@ -40,6 +40,43 @@ public class BoardView extends View {
         RectF rectF_1 = new RectF(width/2-100, height/4-100, width/2+100, height/4+100);
 
         /*Place*/
+        drawMultipleSupportBoard(width, height, canvas);
+        
+        
+    }
+    
+    private void drawMultipleSupportBoard(int width, int height, Canvas canvas) {
+        
+        if(width > height){
+            Windown.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else {
+            Windown.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        
+        int supportPoint = width * 0.093;
+        RectF rectF = new RectF(width / 2 - supportPoint, height/2 + height / 4 - supportPoint, width / 2 + supportPoint, height / 2 + height / 4 + supportPoint);
+        RectF rectF_1 = new RectF(width / 2 - supportPoint, height / 4 - supportPoint, width / 2 + supportPoint, height / 4 + supportPoint);
+        
+        canvas.drawRect(supportPoint, supportPoint, width - supportPoint, height - supportPoint, line);
+        canvas.drawLine(supportPoint, height / 2, width - supportPoint, height / 2, line);
+        canvas.drawCircle(width / 2, height / 2, supportPoint, line);
+        
+        canvas.drawRect(width/2 - supportPoint + (supportPoint/2), supportPoint, width/2 + supportPoint + (supportPoint/2), height/4, line);
+        canvas.drawArc(rectF_1, 0, 180, true, line);
+        canvas.drawLine(width/2 - supportPoint/2, supportPoint + (supportPoint/2), width/2 + supportPoint, supportPoint + (supportPoint/2), line);
+        canvas.drawCircle(width/2, 180, supportPoint/2, line);
+        
+        canvas.drawRect(width/2 - supportPoint + (supportPoint/2), height/2+height/4, width/2+supportPoint + (supportPoint/2), height-supportPoint, line);
+        canvas.drawArc(rectF, 0, -180, true, line);
+        canvas.drawLine(width/2-supportPoint/2, height-supportPoint + (supportPoint/2), width/2+supportPoint/2, height-supportPoint + (supportPoint/2), line);
+        canvas.drawCircle(width/2, height-180, supportPoint/2, line);
+    
+        
+    }
+    
+    /*Just support the 1920*1080.*/
+    private void drawDefaultBoard(Canvas canvas) {
+        
         canvas.drawRect(100, 100, width - 100, height - 100, line);
         canvas.drawCircle(width / 2, height / 2, 100, line);
         canvas.drawLine(100, height / 2, width - 100, height / 2, line);
@@ -54,5 +91,7 @@ public class BoardView extends View {
         canvas.drawArc(rectF, 0, -180, true, line);
         canvas.drawLine(width/2-50, height-150, width/2+50, height-150, line);
         canvas.drawCircle(width/2, height-180, 30, line);
+        
     }
+    
 }
