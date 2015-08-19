@@ -67,6 +67,10 @@ public class BoardView extends View {
         
     }
     
+    private void drawPlayers(int width, int height, Canvas canvas) {
+        
+    }
+    
     /*Just support the 1920*1080.*/
     private void drawDefaultBoard(int width, int height, Canvas canvas) {
 
@@ -89,5 +93,31 @@ public class BoardView extends View {
         canvas.drawCircle(width/2, height-180, 30, line);
         
     }
+    
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+        switch (event.getActionMasked()) {
+
+            case MotionEvent.ACTION_DOWN:
+    
+                dX = view.getX() - event.getRawX();
+                dY = view.getY() - event.getRawY();
+                break;
+    
+            case MotionEvent.ACTION_MOVE:
+    
+                view.animate()
+                        .x(event.getRawX() + dX)
+                        .y(event.getRawY() + dY)
+                        .setDuration(0)
+                        .start();
+                break;
+                
+            default:
+                return false;
+        }
+        return true;
+    }
+
     
 }
