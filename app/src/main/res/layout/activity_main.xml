@@ -12,8 +12,10 @@
         android:background="?attr/colorPrimary"/>
 
     <com.kuo.basketballboard.BoardView
+        android:id="@+id/boardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/toolbar"
+        android:background="@color/Orange_50"/>
 
 </RelativeLayout>

@@ -7,15 +7,24 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
 
 /**
  * Created by User on 2015/8/17.
  */
-public class BoardView extends View {
+public class BoardView extends RelativeLayout {
 
     private String GREY_800 = "#424242";
+    private String BLUE_300 = "#64B5F6";
+
+    private ArrayList<ObjectPlayer> objectPlayers = new ArrayList<ObjectPlayer>();
 
     private Paint line;
+    private Paint playerA;
+    private Paint playerB;
 
     public BoardView(Context context) {
         this(context, null);
@@ -29,18 +38,27 @@ public class BoardView extends View {
         line.setStyle(Paint.Style.STROKE);
         line.setStrokeWidth(5);
 
+        playerA = new Paint();
+        playerA.setColor(Color.parseColor(BLUE_300));
+
     }
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {
 
         int width = getWidth();
         int height = getHeight();
-
+        float supportPoint = width * 0.093f;
 
         /*Place*/
         drawMultipleSupportBoard(width, height, canvas);
-        
+
+        ObjectPlayer objectPlayer = new ObjectPlayer(getContext());
+        objectPlayer.drawPlayer(supportPoint/2, height/2 - supportPoint/3, supportPoint/3, playerA, canvas);
+        objectPlayers.add(objectPlayer);
+
         
     }
     
@@ -93,31 +111,5 @@ public class BoardView extends View {
         canvas.drawCircle(width/2, height-180, 30, line);
         
     }
-    
-    @Override
-    public boolean onTouch(View view, MotionEvent event) {
-        switch (event.getActionMasked()) {
 
-            case MotionEvent.ACTION_DOWN:
-    
-                dX = view.getX() - event.getRawX();
-                dY = view.getY() - event.getRawY();
-                break;
-    
-            case MotionEvent.ACTION_MOVE:
-    
-                view.animate()
-                        .x(event.getRawX() + dX)
-                        .y(event.getRawY() + dY)
-                        .setDuration(0)
-                        .start();
-                break;
-                
-            default:
-                return false;
-        }
-        return true;
-    }
-
-    
 }
