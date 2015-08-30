@@ -10,4 +10,10 @@
     <color name="Orange_700">#F57C00</color>
     <color name="Orange_800">#EF6C00</color>
     <color name="Orange_900">#E65100</color>
+
+    <color name="RED_300">#E57373</color>
+    <color name="GREEN_300">#81C784</color>
+    <color name="BLUE_300">#64B5F6</color>
+    <color name="GREY_800">#424242</color>
+    <color name="GREY_50">#FAFAFA</color>
 </resources>
