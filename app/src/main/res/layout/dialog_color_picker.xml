@@ -5,15 +5,35 @@
     android:layout_height="match_parent"
     android:background="@color/GREY_50">
 
-    <ImageView
-        android:id="@+id/colorView"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+    <LinearLayout
+        android:id="@+id/colorViewLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.kuo.basketballboard.LineView
+            android:id="@+id/colorView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <SeekBar
+            android:id="@+id/lineWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:max="50"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:progressDrawable="@drawable/red_seekbar_progress"
+            android:thumbTint="@color/RED_300"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/colorView"
+        android:layout_below="@+id/colorViewLayout"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -101,7 +121,33 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right">
 
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="取消"
+                android:textSize="20dp"
+                android:textColor="@color/Orange_500"
+                android:background="@drawable/white_background_selector"/>
+
+            <Button
+                android:id="@+id/enterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="確定"
+                android:textSize="20dp"
+                android:textColor="@color/Orange_500"
+                android:background="@drawable/white_background_selector"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

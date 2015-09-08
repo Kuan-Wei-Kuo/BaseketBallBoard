@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Bitmap bitmap = Bitmap.createBitmap(boardView.getWidth(), boardView.getHeight(), Bitmap.Config.ARGB_8888); //設置點陣圖的寬高
-            boardView.onCreateDrawLineCanvas(bitmap);
 
         }
     }
@@ -78,13 +77,32 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(id == R.id.action_color_picker) {
-
+        if(id == R.id.action_draw_line) {
+            if(!boardView.getDrawLine()){
+                boardView.setDrawLine(true);
+                item.setIcon(R.mipmap.mouse_icon);
+            }else {
+                boardView.setDrawLine(false);
+                item.setIcon(R.mipmap.color_picker_icon);
+            }
+        }else if(id == R.id.action_color_picker) {
             ColorPickerDialog colorPickerDialog = new ColorPickerDialog();
+            colorPickerDialog.setOnCallBackLineData(onCallBackLineData);
             colorPickerDialog.show(getSupportFragmentManager(), "dialog");
-
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private ColorPickerDialog.OnCallBackLineData onCallBackLineData = new ColorPickerDialog.OnCallBackLineData() {
+        @Override
+        public void getWidth(int i) {
+            boardView.setLineWidth(i);
+        }
+
+        @Override
+        public void getColor(int r, int g, int b) {
+            boardView.setLineColor(r, g, b);
+        }
+    };
 }

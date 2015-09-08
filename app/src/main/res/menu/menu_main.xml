@@ -5,10 +5,17 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_color_picker"
+        android:id="@+id/action_draw_line"
         android:title="顏色選擇"
         android:icon="@mipmap/color_picker_icon"
         android:orderInCategory="90"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_color_picker"
+        android:title="顏色選擇"
+        android:icon="@mipmap/line_color_picker_icon"
+        android:orderInCategory="180"
         app:showAsAction="ifRoom"/>
 
 </menu>
