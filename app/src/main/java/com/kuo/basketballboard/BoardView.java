@@ -36,6 +36,7 @@ public class BoardView extends RelativeLayout {
     private ArrayList<ColorPath> colorPaths = new ArrayList<>();
     private ArrayList<Path> paths = new ArrayList<>();
     private Map<Path, Integer> colorsMap = new HashMap<Path, Integer>();
+    private Map<Path, Integer> sizeMap = new HashMap<Path, Integer>();
 
     public BoardView(Context context) {
         this(context, null);
@@ -64,19 +65,26 @@ public class BoardView extends RelativeLayout {
         int width = getWidth();
         int height = getHeight();
         int lineColor = userLine.getColor();
+        int lineSize = (int)userLine.getStrokeWidth();
         /*Place*/
         drawMultipleSupportBoard(width, height, canvas);
 
-        if (paths.size() > 0) {
-            for (Path p : paths)
-            {
-                userLine.setColor(colorsMap.get(p));
-                canvas.drawPath(p, userLine);
-            }
-            userLine.setColor(lineColor);
-            canvas.drawPath(path, userLine);
+        for (Path p : paths) {
+            userLine.setStrokeWidth(sizeMap.get(p));
+            userLine.setColor(colorsMap.get(p));
+            canvas.drawPath(p, userLine);
         }
+        userLine.setStrokeWidth(lineSize);
+        userLine.setColor(lineColor);
+        canvas.drawPath(path, userLine);
 
+    }
+
+    public void removePath() {
+        path = new Path();
+        path.reset();
+        paths.clear();
+        invalidate();
     }
 
     public void setLineColor(int i) {
@@ -124,6 +132,7 @@ public class BoardView extends RelativeLayout {
                     break;
                 case MotionEvent.ACTION_UP:
                     paths.add(path);
+                    sizeMap.put(path, (int)userLine.getStrokeWidth());
                     colorsMap.put(path, userLine.getColor()); // store the color of mPath
                     path = new Path();
                     path.reset();

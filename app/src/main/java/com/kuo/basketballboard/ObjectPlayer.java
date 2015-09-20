@@ -37,29 +37,33 @@ public class ObjectPlayer extends View{
 
     }
 
+    public void setColor(int color) {
+        player.setColor(color);
+        invalidate();
+    }
+
     private float dX;
     private float dY;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(isClickable()){
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    dX = getX() - event.getRawX();
+                    dY = getY() - event.getRawY();
+                    break;
 
-        switch (event.getAction()) {
-
-            case MotionEvent.ACTION_DOWN:
-                dX = getX() - event.getRawX();
-                dY = getY() - event.getRawY();
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                this.animate()
-                        .x(event.getRawX() + dX)
-                        .y(event.getRawY() + dY)
-                        .setDuration(0)
-                        .start();
-                break;
-
+                case MotionEvent.ACTION_MOVE:
+                    this.animate()
+                            .x(event.getRawX() + dX)
+                            .y(event.getRawY() + dY)
+                            .setDuration(0)
+                            .start();
+                    break;
+            }
         }
-
         return true;
     }
+
 }

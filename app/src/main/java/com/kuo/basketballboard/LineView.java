@@ -1,6 +1,7 @@
 package com.kuo.basketballboard;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -35,7 +36,7 @@ public class LineView extends View{
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(20);
 
     }
 

@@ -5,9 +5,16 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/action_reset"
+        android:title="重置"
+        android:icon="@mipmap/reset_icon"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/action_draw_line"
-        android:title="顏色選擇"
-        android:icon="@mipmap/color_picker_icon"
+        android:title="想要劃線"
+        android:icon="@mipmap/line_icon"
         android:orderInCategory="90"
         app:showAsAction="ifRoom"/>
 
@@ -15,7 +22,7 @@
         android:id="@+id/action_color_picker"
         android:title="顏色選擇"
         android:icon="@mipmap/line_color_picker_icon"
-        android:orderInCategory="180"
+        android:orderInCategory="90"
         app:showAsAction="ifRoom"/>
 
 </menu>

@@ -25,8 +25,8 @@
             android:max="50"
             android:maxHeight="3dp"
             android:minHeight="3dp"
-            android:progressDrawable="@drawable/red_seekbar_progress"
-            android:thumbTint="@color/RED_300"/>
+            android:progressDrawable="@drawable/orange_seekbar_progress"
+            android:thumbTint="@color/Orange_300"/>
 
     </LinearLayout>
 
@@ -37,25 +37,42 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_below="@+id/text_r"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textSize="25dp"
                 android:text="R"
                 android:textColor="@color/RED_300"/>
 
+            <TextView
+                android:id="@+id/text_r"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/textR"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:text="R"
+                android:textColor="@color/GREY_50"
+                android:background="@drawable/r_tumb_circle"/>
+
             <SeekBar
                 android:id="@+id/slideR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textR"
+                android:layout_below="@+id/text_r"
                 android:padding="10dp"
                 android:max="255"
                 android:maxHeight="3dp"
@@ -63,27 +80,43 @@
                 android:progressDrawable="@drawable/red_seekbar_progress"
                 android:thumbTint="@color/RED_300"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/textG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_below="@+id/text_g"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textSize="25dp"
                 android:text="G"
                 android:textColor="@color/GREEN_300"/>
 
+            <TextView
+                android:id="@+id/text_g"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/textG"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:text="G"
+                android:textColor="@color/GREY_50"
+                android:background="@drawable/g_tumb_circle"/>
+
             <SeekBar
                 android:id="@+id/slideG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textG"
+                android:layout_below="@+id/text_g"
                 android:padding="10dp"
                 android:max="255"
                 android:maxHeight="3dp"
@@ -91,35 +124,51 @@
                 android:progressDrawable="@drawable/green_seekbar_progress"
                 android:thumbTint="@color/GREEN_300" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/textB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:layout_below="@+id/text_b"
                 android:padding="5dp"
                 android:textSize="25dp"
                 android:text="B"
                 android:textColor="@color/BLUE_300"/>
+
+            <TextView
+                android:id="@+id/text_b"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/textB"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:text="B"
+                android:textColor="@color/GREY_50"
+                android:background="@drawable/b_tumb_circle"/>
 
             <SeekBar
                 android:id="@+id/slideB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:layout_toRightOf="@+id/textB"
+                android:layout_below="@+id/text_b"
                 android:max="255"
                 android:maxHeight="3dp"
                 android:minHeight="3dp"
                 android:progressDrawable="@drawable/blue_seekbar_progress"
                 android:thumbTint="@color/BLUE_300" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

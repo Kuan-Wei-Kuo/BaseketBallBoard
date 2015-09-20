@@ -16,6 +16,74 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:background="@color/Orange_50"/>
+        android:background="@color/Orange_50">
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/blue_1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/blue_2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="45dp"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/blue_3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="80dp" />
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/blue_4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="115dp" />
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/blue_5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="150dp" />
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/red_1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/red_2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="45dp"
+            android:layout_alignParentRight="true"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/red_3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="80dp"
+            android:layout_alignParentRight="true"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/red_4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="115dp"
+            android:layout_alignParentRight="true"/>
+
+        <com.kuo.basketballboard.ObjectPlayer
+            android:id="@+id/red_5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentRight="true"/>
+
+
+    </com.kuo.basketballboard.BoardView>
 
 </RelativeLayout>
