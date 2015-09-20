@@ -79,10 +79,6 @@ public class ColorPickerDialog extends DialogFragment {
 
     }
 
-    public void setLineWidth(int i) {
-        colorView.setLineWidth(i);
-    }
-
     public void setOnCallBackLineData(OnCallBackLineData onCallBackLineData) {
         this.onCallBackLineData = onCallBackLineData;
     }
@@ -107,35 +103,21 @@ public class ColorPickerDialog extends DialogFragment {
         }
     };
 
-    private float x = 0;
-    private int oldProgressR;
-    private int oldProgressG;
-    private int oldProgressB;
-
     private SeekBar.OnSeekBarChangeListener onSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
             switch (seekBar.getId()) {
                 case R.id.slideR:
-                    text_r.setText(seekBar.getProgress() + "");
-                    x = (seekBar.getWidth() / 255f) * (seekBar.getProgress() - oldProgressR);
-                    text_r.animate().x(computtingPosition(x + text_r.getX(), seekBar.getWidth() - (text_r.getWidth()/2f), seekBar.getX())).setDuration(0).start();
+                    onComputtingSeekBar(seekBar, text_r, oldProgressR);
                     oldProgressR = seekBar.getProgress();
-                    colorView.setLineColor(Color.rgb(slideR.getProgress(), slideG.getProgress(), slideB.getProgress()));
                     break;
                 case R.id.slideG:
-                    text_g.setText(seekBar.getProgress() + "");
-                    x = (seekBar.getWidth() / 255f) * (seekBar.getProgress() - oldProgressG);
-                    text_g.animate().x(computtingPosition(x + text_g.getX(), seekBar.getWidth() - (text_r.getWidth()/2f), seekBar.getX())).setDuration(0).start();
+                    onComputtingSeekBar(seekBar, text_g, oldProgressG);
                     oldProgressG = seekBar.getProgress();
-                    colorView.setLineColor(Color.rgb(slideR.getProgress(), slideG.getProgress(), slideB.getProgress()));
                     break;
                 case R.id.slideB:
-                    text_b.setText(seekBar.getProgress() + "");
-                    x = (seekBar.getWidth() / 255f) * (seekBar.getProgress() - oldProgressB);
-                    text_b.animate().x(computtingPosition(x + text_b.getX(), seekBar.getWidth() - (text_r.getWidth()/2f), seekBar.getX())).setDuration(0).start();
+                    onComputtingSeekBar(seekBar, text_b, oldProgressB);
                     oldProgressB = seekBar.getProgress();
-                    colorView.setLineColor(Color.rgb(slideR.getProgress(), slideG.getProgress(), slideB.getProgress()));
                     break;
                 case R.id.lineWidth:
                     colorView.setLineWidth(lineWidth.getProgress());
@@ -180,6 +162,19 @@ public class ColorPickerDialog extends DialogFragment {
         }
 
     };
+
+
+    private float x = 0;
+    private int oldProgressR;
+    private int oldProgressG;
+    private int oldProgressB;
+
+    private void onComputtingSeekBar(SeekBar seekBar, TextView textView, int oldProgress) {
+        x = (seekBar.getWidth() / 255f) * (seekBar.getProgress() - oldProgress);
+        textView.setText(seekBar.getProgress() + "");
+        textView.animate().x(computtingPosition(x + textView.getX(), seekBar.getWidth() - (textView.getWidth()/2f), seekBar.getX())).setDuration(0).start();
+        colorView.setLineColor(Color.rgb(slideR.getProgress(), slideG.getProgress(), slideB.getProgress()));
+    }
 
     private float computtingPosition(float x, float border, float startBorder) {
 

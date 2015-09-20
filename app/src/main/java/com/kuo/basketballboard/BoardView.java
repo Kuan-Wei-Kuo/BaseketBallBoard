@@ -33,7 +33,6 @@ public class BoardView extends RelativeLayout {
     private Paint line;
     private Paint userLine;
     private Path path = null;
-    private ArrayList<ColorPath> colorPaths = new ArrayList<>();
     private ArrayList<Path> paths = new ArrayList<>();
     private Map<Path, Integer> colorsMap = new HashMap<Path, Integer>();
     private Map<Path, Integer> sizeMap = new HashMap<Path, Integer>();
@@ -114,6 +113,7 @@ public class BoardView extends RelativeLayout {
                     invalidate();
                     break;
                 case MotionEvent.ACTION_MOVE:
+
                     x = (int) event.getX();
                     y = (int) event.getY();
 
@@ -123,20 +123,21 @@ public class BoardView extends RelativeLayout {
                     float cX = (x + previousX) / 2;
                     float cY = (y + previousY) / 2;
 
-                    //二次贝塞尔，实现平滑曲线；previousX, previousY为操作点，cX, cY为终点
                     path.quadTo(previousX, previousY, cX, cY);
-                    //第二次执行时，第一次结束调用的坐标值将作为第二次调用的初始坐标值
+
                     mX = x;
                     mY = y;
                     invalidate();
                     break;
                 case MotionEvent.ACTION_UP:
+
                     paths.add(path);
                     sizeMap.put(path, (int)userLine.getStrokeWidth());
                     colorsMap.put(path, userLine.getColor()); // store the color of mPath
                     path = new Path();
                     path.reset();
                     invalidate();
+
                     break;
             }
         }
